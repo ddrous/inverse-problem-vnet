@@ -8,3 +8,5 @@ slides/*
 !slides/main.tex
 !slides/main.pdf
 !slides/Sections
+!slides/Figures
+!slides/bibliography
