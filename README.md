@@ -49,7 +49,7 @@ Utiliser CMake:
 Les données pretraitées et prêtes pour l'apprentissage sont téléchargeables à partir de [ce lien sur Seafile](https://seafile.unistra.fr/f/f797cf0c9ec444c582c0/?dl=1) (3.1 GB).
 
 ### Apprentissage  
-- Régression: `notebook/Regression.ipynb`
+- Reconstruction de la densité: `notebook/ApprentissageVnet.ipynb`
 
 <br/>
 
