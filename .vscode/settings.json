@@ -1,0 +1,11 @@
+{
+    "spellright.language": [
+        "fr"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "python.pythonPath": "C:\\Users\\Roussel\\miniconda3\\python.exe"
+}

@@ -1,0 +1,16 @@
+name: CMake CI
+
+on: [push]
+
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: configure
+      run: rm -rf build && mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-Werror" ..
+    - name: build
+      run: cmake --build build
+    - name: test
+      run: cd build && mkdir data && cd data && mkdir anim && ctest

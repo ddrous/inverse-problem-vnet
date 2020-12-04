@@ -1,0 +1,214 @@
+%-------------------------------------------------------------------------------
+%							PREAMBULE
+%-------------------------------------------------------------------------------
+
+\documentclass[9pt,xcolor=dvipsnames]{beamer} % dvipsnames gives more built-in colors
+
+\usetheme{Szeged}
+\useoutertheme{miniframes} % Alternatively: miniframes, infolines, split, smoothbars, smoothtree, shadow
+\useinnertheme{rectangles}
+
+\usepackage{media9}
+\usepackage{graphicx}
+
+\usepackage{docmute} % To include multiple files
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows}
+\usetikzlibrary{babel}      % Utiliser ce Babel pour eviter les problemes avec les animations TIKX
+% \usepackage{csquotes}
+
+\graphicspath{ {./Figures/} }
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,bm,mathtools}
+% \usepackage{unicode-math}
+\usepackage{cases}
+\usepackage{siunitx}
+
+\usepackage[T1]{fontenc}
+\usepackage{iwona}    %% Roman text font 
+\usepackage{mathdots}
+\usepackage{eulervm}    %% De eres droits symboles mathmatiques
+
+\newcommand{\bvec}[1]{\bm{#1}}    %% For vector notation
+\newcommand{\myvec}[2]{\begin{pmatrix} #1  \\ #2 \end{pmatrix}}   %% vecteur 2d
+\newcommand{\mymat}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}}  %% Matrice 2*2
+
+\usepackage[backend=bibtex,style=authoryear,maxnames=2,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+\addbibresource{bibliography.bib} % The filename of the bibliography
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography 
+\renewcommand*{\bibfont}{\tiny} % Pour reduire la taille des references
+
+\usepackage[font=scriptsize]{caption}
+% \captionsetup{labelformat=empty,labelsep=none}    % Pour retirer le terme figure des titres
+
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%        %% To remove space after math box
+  \setlength{\abovedisplayskip}{0pt}%
+  \setlength{\belowdisplayskip}{0pt}%
+  \setlength{\abovedisplayshortskip}{0pt}%
+  \setlength{\belowdisplayshortskip}{0pt}}
+% \appto{\normalsize}{\zerodisplayskips}
+% \appto{\small}{\zerodisplayskips}
+% \appto{\footnotesize}{\zerodisplayskips}
+\newcommand{\phifem}{$\phi$-FEM }
+
+\beamertemplatenavigationsymbolsempty   %% Remove nav symbols
+
+%-------------------------------------------------------------------------------
+%							IMPORTANT TRANPARENCY AND COLOR DEFINTION 
+%-------------------------------------------------------------------------------
+\definecolor{MyGreen}{RGB}{0, 50, 0}
+\definecolor{MyRed}{rgb}{0.85, 0, 0}
+\definecolor{MyPurple}{rgb}{0.7, 0.1, 0.7}
+\definecolor{MyGrey}{rgb}{0.7, 0.75, 0.71}
+\definecolor{MyTitleGreen}{rgb}{0.67, 0.88, 0.69}
+
+\usecolortheme[named=MyGreen]{structure} % Base color for the slides
+\setbeamercolor{alerted text}{fg=MyRed}
+\setbeamercolor{section in head/foot}{bg=MyGrey}
+\setbeamercolor{titlelike}{parent=structure,bg=MyGrey}  %% For frametiles
+
+\setbeamercolor{date in head/foot}{bg=MyGrey}
+\setbeamercolor{author in head/foot}{bg=MyGrey}
+\setbeamercolor{subsection in head/foot}{bg=MyTitleGreen}
+
+\setbeamercovered{transparent}    %% Pour avoir de la tranparence
+
+\setbeamertemplate{subsection in head/foot}{}
+
+% ## Set color for blocks and examples
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+%-------------------------------------------------------------------------------
+%							A CUSTOM FOOTLINE
+%-------------------------------------------------------------------------------
+
+\makeatletter
+\setbeamertemplate{footline}{
+	\begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+	\end{beamercolorbox}
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+	% \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+	\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
+
+}
+\makeatother
+
+
+%-------------------------------------------------------------------------------
+%							TITLE PAGE
+%-------------------------------------------------------------------------------
+\begin{document}
+
+
+\title[Transfert radiatif]{Reconstruction de la densité d'un domaine par un Vnet }
+
+% \institute[Université de Strasbourg]{\small \textbf{ \hspace*{0.1mm} Referent teacher} \hspace*{11mm} \textbf{Supervisors} \\ \footnotesize Christophe PRUD'HOMME \hspace*{4mm} Michel DUPREZ \\ \hspace*{38mm} Stephane COTIN}
+\institute[Université de Strasbourg]{\normalsize \textbf{Superviseurs} \\ Vincent VIGON - Emmanuel FRANCK - Laurent NAVORET}
+
+% \institute[University of Strasbourg]{\normalsize \textbf{Enseignant} \\ Pr. Yannick PRIVAT}
+
+\author[Desmond Roussel NGUEGUIN]{\textbf{Étudiant} \\ Desmond Roussel NGUEGUIN}
+% \date[\today]{\textbf{Unités d'enseignement} \\ Traitement de signal 2 - Projet \\ \vspace*{0.2cm} \textbf{Année universitaire 2020/2021}}
+\date[\today]{\textbf{Année universitaire 2020/2021}}
+
+\begingroup  % A new group whose informations are not cannon. Just for convenience
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{\vspace{0.5cm}%
+  \hspace*{0.8cm}%
+  \includegraphics[width=2.8cm]{LogoUnistra}
+  \hfill\raisebox{.2cm}{\normalsize  }\hfill%
+  \includegraphics[width=2.1cm]{LogoIRMA.png}
+  \hfill\raisebox{.2cm}{\normalsize  }\hfill%
+  \includegraphics[width=2.5cm]{LogoCSMI}
+  \hspace*{0.8cm}%
+}
+\begin{frame}[fragile]
+\maketitle
+\end{frame}
+\endgroup
+
+
+
+%-------------------------------------------------------------------------------
+%							SECTION TITLE slides
+%-------------------------------------------------------------------------------
+
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+%-------------------------------------------------------------------------------
+%							INCLUDE THE CHAPTERS
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+  \small
+  \frametitle{Sommaire}
+  \tableofcontents
+\end{frame}
+
+\input{Sections/Section1}
+
+\input{Sections/Section2}
+
+\input{Sections/Section3}
+
+% \input{Sections/Section4}
+
+% \input{Sections/Section5}
+
+% %-------------------------------------------------------------------------------
+% %							THANK YOU NOTE
+% %-------------------------------------------------------------------------------
+
+\begin{frame}
+  \Large
+  \centering
+  Merci pour votre attention durant cette mini-partie. La suite dans le notebook...
+
+\end{frame}
+
+% %-------------------------------------------------------------------------------
+% %							THE BIBLIOGRAPHY
+% %-------------------------------------------------------------------------------
+% \appendix   % Pour retirer les references de la bare de navigation
+% \vspace*{0.5mm}
+% \printbibliography
+
+
+\end{document}

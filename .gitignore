@@ -1,0 +1,9 @@
+data/*
+!data/anim/animation.0.csv
+!data/img/
+debug.log
+build/*
+!data/df_simu.csv
+slides/*
+!slides/main.tex
+!slides/main.pdf
