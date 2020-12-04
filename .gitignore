@@ -7,3 +7,4 @@ build/*
 slides/*
 !slides/main.tex
 !slides/main.pdf
+!slides/Sections
