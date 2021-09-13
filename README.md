@@ -8,6 +8,10 @@ Résolution du problème de propagation de la lumière par la méthode des volum
 - Indications et travail à faire: 
     - `doc/guidelines/projetM1.pdf` 
     - `doc/guidelines/csmi-moco.ipynb`  
+- Précédent travail sur le même sujet: 
+    - `doc/references/Rapport de stage M1.pdf` 
+- Délivrables pour ce travail: 
+    - `notebook/ApprentissageVnet.ipynb` 
 
 <br/>
 
