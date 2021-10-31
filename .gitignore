@@ -10,3 +10,7 @@ slides/*
 !slides/Sections
 !slides/Figures
 !slides/bibliography
+
+.idea/*
+cmake-build-debug/*
+cmake-build-debug-atlas/*
