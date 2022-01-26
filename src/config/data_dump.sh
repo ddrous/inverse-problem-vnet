@@ -7,8 +7,8 @@
 
 
 # Nombre d'iterations totales
-debut=965
-fin=1065
+debut=3004
+fin=3006
 nbsimu=$(($fin-$debut))
 
 
@@ -45,8 +45,8 @@ simulate() {
 # Boucle des simulations
 for (( h = $debut ; h < $fin; h++ )); do
     ## Buld file names
-    input_name="rho numpy:data/forwardPB/inputs/"$h".npy\n"
-    output_name="export_file data/forwardPB/outputs/"$h".sds\n"
+    input_name="rho numpy:data/inputs/"$h".npy\n"
+    output_name="export_file data/outputs/"$h".sds\n"
     echo -e $input_name$output_name > src/config/io_names.txt
     cat src/config/io_names.txt src/config/template_u.txt > src/config/final_u.cfg
     cat src/config/io_names.txt src/config/template_d.txt > src/config/final_d.cfg
