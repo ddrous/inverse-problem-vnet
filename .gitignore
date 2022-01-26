@@ -17,4 +17,3 @@ cmake-build-debug-atlas/*
 
 
 venv/*
-!data/outputs/
