@@ -26,7 +26,7 @@ Utilisez CMake:
 - __`cmake --build build`__  
 
 ### Exécution
-- Pour une simple exécution : __`build/transfer src/config/simu_pd.cfg`__ 
+- Pour une simple exécution : __`build/transfer src/config/test.cfg`__ 
 - Pour faire une série de simulations : __`bash src/simu/data_dump.sh`__ 
 
 #### Format des fichiers de configuration (`data/img/config.pdf`)   

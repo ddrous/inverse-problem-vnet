@@ -1,8 +1,11 @@
 data/*
 !data/anim/animation.0.csv
 !data/img/
+!data/anim/.gitignore
+!data/reports/.gitignore
 debug.log
 build/*
+!build/.gitignore
 !data/df_simu.csv
 slides/*
 !slides/main.tex
